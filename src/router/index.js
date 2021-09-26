@@ -45,34 +45,6 @@ export const constantRoutes = [
 export const asyncRoutes = [
 
   // 讲师管理
-  {
-    path: '/blog',
-    component: Layout,
-    redirect: '/blog/table',
-    name: '博客管理',
-    meta: { title: '博客管理', icon: 'example' },
-    children: [
-      {
-        path: 'table',
-        name: '博客列表',
-        component: () => import('@/views/myblog/blog/list'),
-        meta: { title: '博客列表', icon: 'table' }
-      },
-      {
-        path: 'save',
-        name: '添加博客',
-        component: () => import('@/views/myblog/blog/save'),
-        meta: { title: '添加博客', icon: 'tree' }
-       },
-      {
-        path: 'edit/:id',
-        name: '编辑博客',
-        component: () => import('@/views/myblog/blog/save'),
-        meta: { title: '编辑博客',noCache: true },
-        hidden: true
-      }
-    ]
-  },
 
   {
     path: '/subject',
@@ -92,28 +64,6 @@ export const asyncRoutes = [
         name: '导入博客分类',
         component: () => import('@/views/myblog/class/chapter'),
         meta: { title: '导入博客分类', icon: 'tree' }
-      }
-    ]
-  },
-
-  {
-    path: '/sta',
-    component: Layout,
-    redirect: '/sta/create',
-    name: '统计分析',
-    meta: { title: '统计分析', icon: 'example' },
-    children: [
-      // {
-      //   path: 'create',
-      //   name: '生成数据',
-      //   component: () => import('@/views/sta/create'),
-      //   meta: { title: '生成数据', icon: 'table' }
-      // },
-      {
-        path: 'show',
-        name: '图表显示',
-        component: () => import('@/views/sta/show'),
-        meta: { title: '图表显示', icon: 'tree' }
       }
     ]
   },

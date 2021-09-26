@@ -42,7 +42,12 @@
           <el-input v-model="chapter.title"/>
         </el-form-item>
         <el-form-item label="开课学年">
-          <el-input v-model="chapter.year"/>
+          <el-select v-model="chapter.year" placeholder="请选择">
+          <div v-for="item in 20">
+            <el-option :label="item+2020+'春季'" :value="item+2020+'春季'"></el-option>
+            <el-option :label="item+2020+'秋季'" :value="item+2020+'秋季'"></el-option>
+          </div>
+          </el-select>
         </el-form-item>
       </el-form>
       <div slot="footer" class="dialog-footer">
@@ -86,6 +91,7 @@ export default {
       dialogChapterFormVisible:false,//章节弹框
       dialogVideoFormVisible:false, //小节弹框
       BASE_API: process.env.BASE_API,
+
     }
   },
   created() {
