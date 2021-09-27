@@ -79,7 +79,8 @@
           <div v-html="scope.row.content"></div>
         </template>
       </el-table-column>
-      <el-table-column prop="gmtCreate" label="添加时间" width="160"/>
+      <el-table-column prop="end" label="截止时间" width="160"/>
+<!--      <el-table-column prop="gmtCreate" label="添加时间" width="160"/>-->
 
       <el-table-column label="操作" width="200" align="center">
         <template slot-scope="scope">

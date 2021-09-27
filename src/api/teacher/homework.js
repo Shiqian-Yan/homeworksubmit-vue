@@ -43,6 +43,13 @@ export default {
 
     })
   },
+  getContent(id) {
+    return request({
+      url: `/teacher/homework/getContent/${id}`,
+      method: 'get',
+
+    })
+  },
 
 
 

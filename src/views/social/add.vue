@@ -80,10 +80,14 @@
           <div v-html="scope.row.content"></div>
         </template>
       </el-table-column>
-      <el-table-column prop="gmtCreate" label="添加时间" width="160"/>
+      <el-table-column prop="end" label="截止时间" width="160"/>
 
       <el-table-column label="操作(重复提交可覆盖)" width="200" align="center">
+
         <template slot-scope="scope">
+          <router-link :to="'/submit/content/'+scope.row.id">
+            <el-button type="info" size="mini" icon="el-icon-edit">查看作业内容</el-button>
+          </router-link>
           <div v-for="item in classData">
                   <el-upload
                     v-if="item.id ==scope.row.classId"
@@ -97,7 +101,7 @@
                     :action="BASE_API+`/student/homeworksubmit/upload/${scope.row.classId}/${scope.row.times}/`+item.year"
                     name="file"
                     >
-                    <el-button slot="trigger" size="small" type="primary">提交文件</el-button>
+                    <el-button slot="trigger" size="mini" type="primary">提交文件</el-button>
 <!--                    <el-button-->
 <!--                      :loading="loading"-->
 <!--                      style="margin-left: 10px;"-->
@@ -218,7 +222,7 @@ export default {
       this.importBtnDisabled = false
       this.$message({
         type: 'success',
-        message: '添加课程分类成功'
+        message: '上传成功'
       })
       //跳转课程分类列表
       //路由跳转
@@ -229,7 +233,7 @@ export default {
       this.loading = false
       this.$message({
         type: 'error',
-        message: '添加课程分类失败'
+        message: '上传失败'
       })
     }
   }

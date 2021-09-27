@@ -14,7 +14,15 @@
       <el-form-item label="第几次作业">
         <el-input-number v-model="homework.times" @change="handleChange" :min="1" :max="10" label="描述文字"></el-input-number>
       </el-form-item>
-
+      <el-form-item label="请选择截止时间">
+        <el-date-picker
+          v-model="homework.end"
+          type="datetime"
+          placeholder="选择截止时间"
+          value-format="yyyy-MM-dd HH:mm:ss"
+          default-time="00:00:00"
+        />
+      </el-form-item>
       <el-form-item label="内容">
         <tinymce :height="300" v-model="homework.content"/>
       </el-form-item>

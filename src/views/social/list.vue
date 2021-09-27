@@ -36,7 +36,12 @@
       <el-table-column prop="stuId" label="学号" :show-overflow-tooltip="true"/>
       <el-table-column prop="stuClass" label="班级" :show-overflow-tooltip="true"/>
       <el-table-column prop="gmtCreate" label="添加时间" width="160"/>
-
+      <el-table-column prop="end" label="截止时间" width="160"/>
+      <el-table-column label="在截止时间前几天交的" width="100" :show-overflow-tooltip="true">
+        <template slot-scope="scope">
+         {{getDateTime(scope.row.end,scope.row.gmtCreate)}}
+        </template>
+      </el-table-column>
       <el-table-column label="操作" width="200" align="center">
         <template slot-scope="scope">
           提交成功
@@ -59,6 +64,7 @@
 
 </template>
 <script>
+
 import { getToken } from '@/utils/auth'
 import homeworkSubmit from '../../api/student/submit'
 import classApi from '../../api/myblog/class'
@@ -75,7 +81,8 @@ export default {
       page:1,//当前页
       limit:10,//每页记录数
       total:0,//总记录数
-      classData: null
+      classData: null,
+      timeLate:''
     }
   },
   created() {
@@ -83,6 +90,23 @@ export default {
     this.getClassData()
   },
   methods:{
+    getDateTime(date1,date2) {
+      var dateSpan, iDays;
+      date1 = new Date(date1)
+      date2 = new Date(date2)
+      let sDate1 = date1.getTime();
+      let sDate2 = date2.getTime();
+      dateSpan = sDate1 - sDate2;
+      var str
+      if(dateSpan<0){
+        str="晚交了"
+      }else{
+        str="提前交了"
+      }
+      iDays = Math.floor(dateSpan / (24 * 3600 * 1000));
+      return str+Math.abs(iDays)+"天"
+    },
+
     getList(page=1) {
       this.page = page
       homeworkSubmit.getSubmitHomeworkListPage(this.page,this.limit)

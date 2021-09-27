@@ -1,7 +1,7 @@
 <template>
   <div class="app-container">
     <el-form ref="user" :model="user" :rules="validateRules" label-width="120px">
-      <el-form-item label="学号" prop="username">
+      <el-form-item label="学号/账号" prop="username">
         <el-input v-model="user.username"/>
       </el-form-item>
       <el-form-item label="姓名">
@@ -57,7 +57,7 @@ const validatePass = (rule, value, callback) => {
 
 const validateUserName = (rule, value, callback) => {
   if (value.length > 10 || value.length<7) {
-    callback(new Error('请输入正确的学号'))
+    callback(new Error('请输入学号应该在7-10位之间'))
   } else {
     callback()
   }
@@ -70,7 +70,7 @@ export default {
       user: defaultForm,
       saveBtnDisabled: false, // 保存按钮是否禁用,
       validateRules: {
-        username: [{ required: true, trigger: 'blur', validator: validateUserName }],
+        username: [{ required: true, trigger: 'blur', validator: validateUserName}],
         password: [{ required: true, trigger: 'blur', validator: validatePass }]
       },
       checkedCity: '', //已选中

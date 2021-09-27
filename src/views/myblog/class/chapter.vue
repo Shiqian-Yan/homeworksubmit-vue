@@ -1,8 +1,8 @@
 <template>
 
   <div class="app-container">
-    <h2 style="text-align: center;">添加分类</h2>
-    <el-button type="text" @click="openChapterDialog()">添加分类</el-button>
+    <h2 style="text-align: center;">添加课程</h2>
+    <el-button type="text" @click="openChapterDialog()">添加课程</el-button>
     <!-- 章节 -->
     <ul class="chanpterList">
       <li
@@ -38,7 +38,7 @@
     <!-- 添加和修改章节表单 -->
     <el-dialog :visible.sync="dialogChapterFormVisible" title="添加或修改分类">
       <el-form :model="chapter" label-width="120px">
-        <el-form-item label="分类名称">
+        <el-form-item label="课程名称">
           <el-input v-model="chapter.title"/>
         </el-form-item>
         <el-form-item label="开课学年">
